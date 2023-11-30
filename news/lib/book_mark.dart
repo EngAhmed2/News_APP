@@ -42,23 +42,41 @@ class BookMark extends StatelessWidget {
             body: Container(
               margin: const EdgeInsets.only(top: 24,),
               child: ListView.builder(
-                physics: BouncingScrollPhysics(),
-                itemCount: 30,
+                physics: const BouncingScrollPhysics(),
+                itemCount: data.length,
                 itemBuilder: (context, index) {
                   return  ListTile(
-                    trailing: Icon(Icons.image_rounded),
+
+                    trailing:  Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: NetworkImage(
+                            data[index].urlToImage??
+                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMxghWKz3Gq_0VKVTyEwzr-t5V9MtXxpQmeA&usqp=CAU',
+
+                          ),
+                        ),
+                      ),
+                    ),
                     title: Text(
-                      data[index].description??'No Description Found',
+                      data[index].title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontSize: 18,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w600,
                         color: Color(0xff231F20),
+
                       ),
                     ),
                     subtitle: Text(
-                      data[index].source.name??'Interior',
-                      style: TextStyle(
+                      data[index].source.name,
+                      style: const TextStyle(
                         fontSize: 12,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w400,
