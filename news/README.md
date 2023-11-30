@@ -1,6 +1,6 @@
 # news
 
-A News API Project.
+A News APP Project.
 
 ## Getting Started
 
